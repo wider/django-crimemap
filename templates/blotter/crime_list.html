@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block extra_script %}
+    function load() {
+      if (GBrowserIsCompatible()) {
+        var map = new GMap2(document.getElementById("map"));
+        map.setCenter(new GLatLng(34.002, -81.0239), 10);
+        map.addControl(new GSmallMapControl());
+      }
+      // Adds a Marker
+      var tinyIcon = new GIcon();
+      tinyIcon.image = "{{ MEDIA_URL }}img/mm_20_purple.png";
+      tinyIcon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
+      tinyIcon.iconSize = new GSize(12, 20);
+      tinyIcon.shadowSize = new GSize(22, 20);
+      tinyIcon.iconAnchor = new GPoint(6, 20);
+      tinyIcon.infoWindowAnchor = new GPoint(5, 1);
+      {% for crime in object_list %}
+      tinyIcon.image = "{{ MEDIA_URL }}img/mm_20_{{ crime.crime_type.marker_color }}.png";
+      var marker{{ crime.id }} = new GMarker(new GLatLng('{{ crime.latitude }}', '{{ crime.longitude }}'), {title: "foo?", icon:tinyIcon});
+      marker{{ crime.id }}.bindInfoWindow("<h3>{{ crime.crime_type }}</h3><p>{{ crime.description }}</p><h5>Added: {{ crime.date }}</h5>", {maxWidth: 400});
+      map.addOverlay(marker{{ crime.id }});
+      {% endfor %}
+
+    }
+{% endblock %}
