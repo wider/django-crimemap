@@ -1,11 +1,3 @@
 *.pyc
 *.db
-import os
-from django.conf import settings
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'static')
-MEDIA_URL = "http://localhost:8000/static/"
-DATABASE_ENGINE = 'mysql'
-TIME_ZONE = 'America/New_York'
-DATABASE_NAME = 'crime_map'
-DATABASE_USER = 'root'
-settings.TEMPLATE_DIRS += (os.path.join(os.path.dirname(__file__), 'templates'),)
+local_settings.py
