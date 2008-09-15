@@ -1,7 +1,5 @@
 # Django settings for crime_map project.
 
-YAHOO_API_KEY = 'CR3UDIvV34EORysanmmcavFBca3e_djCIftQY3wb2aknvZ1eMfSQWRVX8Dds'
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
