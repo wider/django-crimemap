@@ -1,3 +1,4 @@
+{% load humanize %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -29,7 +30,7 @@
           {% for crime in object_list %}
               tinyIcon.image = "{{ MEDIA_URL }}img/mm_20_{{ crime.crime_type.marker_color }}.png";
               var marker{{ crime.id }} = new GMarker(new GLatLng('{{ crime.latitude }}', '{{ crime.longitude }}'), {title: "{{ crime.crime_type }}", icon:tinyIcon});
-              marker{{ crime.id }}.bindInfoWindow("<div class=\"bubble_text\"><h3>{{ crime.crime_type }}</h3><p>{{ crime.description|truncatewords:50 }}<br /><a href=\"{{ crime.get_absolute_url }}\" style=\"text-align: right;\">Read more</a></p><h5>Added: {{ crime.date }}</h5></div>", {maxWidth: 400});
+              marker{{ crime.id }}.bindInfoWindow("<div class=\"bubble_text\"><h3>{{ crime.block|ordinal }} block of {{ crime.street }}</h3><p>{{ crime.description|truncatewords:50 }}<br /><a href=\"{{ crime.get_absolute_url }}\" style=\"text-align: right;\">Read more</a></p><h5>Added: {{ crime.date }}</h5><h5>Reported as: {{ crime.crime_type }}</h5></div>", {maxWidth: 400});
               map.addOverlay(marker{{ crime.id }});
           {% endfor %}
 
@@ -50,15 +51,15 @@
                 <div id="map" class="grid_8 alpha"></div>
                 <div id="sidebar" class="grid_4 omega">
                     <ul id="legend">
-                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_blue.png" />Theft / Burglary</a></li>
-                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_red.png" />Assaults</a></li>
-                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_green.png" />Traffic / DUI</a></li>
-                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_teal.png" />Scam / Financial Crime</a></li>
-                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_yellow.png" />Vandalism</a></li>
-                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_purple.png" />Threat / Harassment</a></li>
-                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_magenta.png" />Drugs / Public Drunkenness</a></li>
-                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_orange.png" />Weapons Crime</a></li>
-                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_black.png" />Other Crime</a></li>
+                        <li><a href="/crimes/type/theft-burglary"><img src="{{ MEDIA_URL }}img/mm_20_blue.png" />Theft / Burglary</a></li>
+                        <li><a href="/crimes/type/assault"><img src="{{ MEDIA_URL }}img/mm_20_red.png" />Assaults</a></li>
+                        <li><a href="/crimes/type/traffic-dui"><img src="{{ MEDIA_URL }}img/mm_20_green.png" />Traffic / DUI</a></li>
+                        <li><a href="/crimes/type/scam-financial-crime"><img src="{{ MEDIA_URL }}img/mm_20_teal.png" />Scam / Financial Crime</a></li>
+                        <li><a href="/crimes/type/vandalism"><img src="{{ MEDIA_URL }}img/mm_20_yellow.png" />Vandalism</a></li>
+                        <li><a href="/crimes/type/threat-harassment"><img src="{{ MEDIA_URL }}img/mm_20_purple.png" />Threat / Harassment</a></li>
+                        <li><a href="/crimes/type/drugs-public-drunkenness"><img src="{{ MEDIA_URL }}img/mm_20_magenta.png" />Drugs / Public Drunkenness</a></li>
+                        <li><a href="/crimes/type/weapons-crime"><img src="{{ MEDIA_URL }}img/mm_20_orange.png" />Weapons Crime</a></li>
+                        <li><a href="/crimes/type/other-crime"><img src="{{ MEDIA_URL }}img/mm_20_black.png" />Other Crime</a></li>
                     </ul><!-- end ul#legend -->
                 </div><!-- end div#sidebar -->
                 <div id="crime_list" class="grid_8 alpha">
