@@ -1,1 +1,11 @@
 @import url('960.css');
+* { font-family: Helvetica, Arial, sans-serif; }
+div#map { height: 400px; }
+div.bubble_text { font-size: 85%; }
+a img { border: 0; padding: 0 5px; }
+a { color: #22c; text-decoration: none; }
+ul { list-style: none; }
+ul li { margin: 10px 0px; }
+div.crime { padding: 10px; }
+div.row_odd { background: #eee; }
+div.row_even { background: #ccc; }
