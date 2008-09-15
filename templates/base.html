@@ -1,21 +1,73 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>Google Maps JavaScript API Example</title>
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA3fcPN_VWfbAQSbafDHSU8xT7iXR3kLtMxLefJKEKDDHRhmqYtRT7SwwOfOIi1Uw0hsXovAFnaL7nbg"
-      type="text/javascript"></script>
-    <script type="text/javascript">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>thestate.com crime map</title>
+        <link rel="stylesheet" href="{{ MEDIA_URL }}css/master.css" type="text/css" media="screen" title="Main CSS File" charset="utf-8" />
+        <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA3fcPN_VWfbAQSbafDHSU8xT7iXR3kLtMxLefJKEKDDHRhmqYtRT7SwwOfOIi1Uw0hsXovAFnaL7nbg"
+          type="text/javascript"></script>
+        <script type="text/javascript">
+  
+        //<![CDATA[
+        {% block map_script %}
 
-    //<![CDATA[
-    {% block extra_script %}
-    {% endblock %}
-    //]]>
-    </script>
-  </head>
-  <body onload="load()" onunload="GUnload()">
-    <div id="map" style="width: 700px; height: 500px"></div>
-  </body>
+        function load() {
+          if (GBrowserIsCompatible()) {
+            var map = new GMap2(document.getElementById("map"));
+            map.setCenter(new GLatLng(34.002, -81.0239), 10);
+            map.addControl(new GSmallMapControl());
+          }
+          // Adds a Marker
+          var tinyIcon = new GIcon();
+          tinyIcon.image = "{{ MEDIA_URL }}img/mm_20_purple.png";
+          tinyIcon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
+          tinyIcon.iconSize = new GSize(12, 20);
+          tinyIcon.shadowSize = new GSize(22, 20);
+          tinyIcon.iconAnchor = new GPoint(6, 20);
+          tinyIcon.infoWindowAnchor = new GPoint(5, 1);
+          {% for crime in object_list %}
+              tinyIcon.image = "{{ MEDIA_URL }}img/mm_20_{{ crime.crime_type.marker_color }}.png";
+              var marker{{ crime.id }} = new GMarker(new GLatLng('{{ crime.latitude }}', '{{ crime.longitude }}'), {title: "{{ crime.crime_type }}", icon:tinyIcon});
+              marker{{ crime.id }}.bindInfoWindow("<div class=\"bubble_text\"><h3>{{ crime.crime_type }}</h3><p>{{ crime.description|truncatewords:50 }}<br /><a href=\"{{ crime.get_absolute_url }}\" style=\"text-align: right;\">Read more</a></p><h5>Added: {{ crime.date }}</h5></div>", {maxWidth: 400});
+              map.addOverlay(marker{{ crime.id }});
+          {% endfor %}
+
+        }
+
+        {% endblock %}
+        //]]>
+        </script>
+    </head>
+    <body onload="load()" onunload="GUnload()">
+        <div class="container_12">
+            <div id="masthead" class="grid_12">
+                <h1 class="logo">thestate.com</h1>
+                <div class="ad"></div>
+            </div>
+  
+            <div id="content" class="grid_12">
+                <div id="map" class="grid_8 alpha"></div>
+                <div id="sidebar" class="grid_4 omega">
+                    <ul id="legend">
+                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_blue.png" />Theft / Burglary</a></li>
+                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_red.png" />Assaults</a></li>
+                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_green.png" />Traffic / DUI</a></li>
+                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_teal.png" />Scam / Financial Crime</a></li>
+                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_yellow.png" />Vandalism</a></li>
+                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_purple.png" />Threat / Harassment</a></li>
+                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_magenta.png" />Drugs / Public Drunkenness</a></li>
+                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_orange.png" />Weapons Crime</a></li>
+                        <li><a href="#"><img src="{{ MEDIA_URL }}img/mm_20_black.png" />Other Crime</a></li>
+                    </ul><!-- end ul#legend -->
+                </div><!-- end div#sidebar -->
+                <div id="crime_list" class="grid_8 alpha">
+                    {% block crime_list %}{% endblock %}
+                </div><!-- end div#crime_list -->
+                <div class="ad">
+                </div><!-- end div.ad -->
+            </div><!-- end div#content -->
+        </div><!-- end div.container_12 -->
+    </body>
 </html>
 
