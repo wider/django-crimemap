@@ -42,6 +42,15 @@ class Crime(models.Model):
     latitude = models.FloatField(blank=True)
     longitude = models.FloatField(blank=True)
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('crime-instance', 
+            [int(self.date.year),
+            self.date.strftime('%b'),
+            int(self.date.day),
+            self.id]
+        )
+
     def save(self):
         if self.latitude == None and self.longitude == None:
             y = geocoders.Yahoo(settings.YAHOO_API_KEY)
