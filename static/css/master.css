@@ -7,5 +7,6 @@ a { color: #22c; text-decoration: none; }
 ul { list-style: none; }
 ul li { margin: 10px 0px; }
 div.crime { padding: 10px; }
+div.crime * { margin: 5px; }
 div.row_odd { background: #eee; }
 div.row_even { background: #ccc; }

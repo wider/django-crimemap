@@ -3,7 +3,9 @@
     {% if object_list %}
     {% for crime in object_list %}
         <div class="crime row_{% cycle 'even' 'odd' %}">
-            <p>{{ crime.crime_type }} at the {{ crime.block }} block of {{ crime.street }}. Reported by {{ crime.agency }}</p>
+            <h4>{{ crime.crime_type }}</h4>
+            <p>{{ crime.block }} block of {{ crime.street }}.</p>
+            <p>Reported by {{ crime.agency }}</p>
         </div>
     {% endfor %}
     {% else %}
