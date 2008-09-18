@@ -1,5 +1,6 @@
 @import url('960.css');
 * { font-family: Helvetica, Arial, sans-serif; }
+.float_right { float: right; }
 div#map { height: 400px; }
 div.bubble_text { font-size: 85%; }
 a img { border: 0; padding: 0 5px; }
