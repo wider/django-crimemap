@@ -63,6 +63,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'crime_map.urls'
@@ -79,17 +80,22 @@ TEMPLATE_CONTEXT_PROCESSORS = (
        'django.core.context_processors.debug',
        'django.core.context_processors.i18n',
        'django.core.context_processors.media',
+       'django.core.context_processors.request',
        'crime_map.blotter.request_context.agencies',
        'crime_map.blotter.request_context.crime_types',
 )
 
 INSTALLED_APPS = (
+    # Django Defaults
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.humanize',
+    # 3rd Party
+    'pagination',
+    # Local
     'crime_map.blotter',
 )
 
