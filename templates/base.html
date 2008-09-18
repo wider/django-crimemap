@@ -48,23 +48,29 @@
             </div>
   
             <div id="content" class="grid_12">
-                <div id="map" class="grid_8 alpha"></div>
-                <div id="sidebar" class="grid_4 omega">
-                    <ul id="legend">
-                        <li><a href="/crimes/type/theft-burglary"><img src="{{ MEDIA_URL }}img/mm_20_blue.png" />Theft / Burglary</a></li>
-                        <li><a href="/crimes/type/assault"><img src="{{ MEDIA_URL }}img/mm_20_red.png" />Assaults</a></li>
-                        <li><a href="/crimes/type/traffic-dui"><img src="{{ MEDIA_URL }}img/mm_20_green.png" />Traffic / DUI</a></li>
-                        <li><a href="/crimes/type/scam-financial-crime"><img src="{{ MEDIA_URL }}img/mm_20_teal.png" />Scam / Financial Crime</a></li>
-                        <li><a href="/crimes/type/vandalism"><img src="{{ MEDIA_URL }}img/mm_20_yellow.png" />Vandalism</a></li>
-                        <li><a href="/crimes/type/threat-harassment"><img src="{{ MEDIA_URL }}img/mm_20_purple.png" />Threat / Harassment</a></li>
-                        <li><a href="/crimes/type/drugs-public-drunkenness"><img src="{{ MEDIA_URL }}img/mm_20_magenta.png" />Drugs / Public Drunkenness</a></li>
-                        <li><a href="/crimes/type/weapons-crime"><img src="{{ MEDIA_URL }}img/mm_20_orange.png" />Weapons Crime</a></li>
-                        <li><a href="/crimes/type/other-crime"><img src="{{ MEDIA_URL }}img/mm_20_black.png" />Other Crime</a></li>
-                    </ul><!-- end ul#legend -->
-                </div><!-- end div#sidebar -->
+            <div id="main_content" class="grid_8 alpha">
+                <div id="map"></div>
                 <div id="crime_list" class="grid_8 alpha">
                     {% block crime_list %}{% endblock %}
                 </div><!-- end div#crime_list -->
+            </div>
+            <div id="sidebar" class="grid_4 omega">
+                    <ul id="legend">
+                        <li><a href="/crimes/">All Crimes</a></li>
+
+                        <h3>Sort by Crime Type</h3>
+                        {% for crimetype in crimetypes %}
+                        <li><a href="/crimes/type/{{ crimetype.slug }}"><img src="{{ MEDIA_URL }}img/mm_20_{{ crimetype.marker_color }}.png" />{{ crimetype }}</a></li>
+                        {% endfor %}
+
+                        <h3>Sort by Agency</h3>
+                         {% for agency in agencies %}
+                        <li><a href="/crimes/agency/{{ agency.slug }}">{{ agency }}</a></li>
+                        {% endfor %}
+
+                   </ul><!-- end ul#legend -->
+                </div><!-- end div#sidebar -->
+
                 <div class="ad">
                 </div><!-- end div.ad -->
             </div><!-- end div#content -->
