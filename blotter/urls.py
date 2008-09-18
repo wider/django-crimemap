@@ -16,6 +16,6 @@ urlpatterns = patterns('',
     url(r'^type/(?P<crime_type>[-\w]+)/$', by_type, name="crime-type-filter"),
 
     # Crimes by Agency
-    url(r'^agency/$', 'django.views.generic.list_detail.object_list', dict(queryset=Crime.objects.all()), name="crime-agency-list"),
-    url(r'^agency/(?P<agency>[-\w]+)/$', 'django.views.generic.list_detail.object_list', dict(queryset=Crime.objects.all()), name="crime-agency-filter"),
+    url(r'^agency/$', 'django.views.generic.list_detail.object_list', dict(queryset=Crime.objects.all()), name="crime-type-list"),
+    url(r'^agency/(?P<agency>[-\w]+)/$',by_agency, name="crime-agency-filter"),
 )
