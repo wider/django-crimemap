@@ -41,6 +41,7 @@ class Crime(models.Model):
     description = models.TextField()
     latitude = models.FloatField(blank=True)
     longitude = models.FloatField(blank=True)
+    approved = models.BooleanField(default=False)
 
     @models.permalink
     def get_absolute_url(self):
