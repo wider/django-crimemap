@@ -69,6 +69,16 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    "/Users/jlilly/Code/django-trunk/django/contrib/admindocs/templates/",
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+       'django.core.context_processors.auth',
+       'django.core.context_processors.debug',
+       'django.core.context_processors.i18n',
+       'django.core.context_processors.media',
+       'crime_map.blotter.request_context.agencies',
+       'crime_map.blotter.request_context.crime_types',
 )
 
 INSTALLED_APPS = (
