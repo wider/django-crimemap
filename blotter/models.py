@@ -15,6 +15,7 @@ COLOR_CHOICES = (
     ('black',   'black'),
 )
 
+
 class CrimeType(models.Model):
     type = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
@@ -30,6 +31,15 @@ class Agency(models.Model):
     def __unicode__(self):
         return self.name
 
+class CrimeManager(models.Manager):
+
+    def approved(self):
+        return super(CrimeManager, self).get_query_set().filter(approved=True)
+
+    def unapproved(self):
+        return super(CrimeManager, self).get_query_set().filter(approved=False)
+
+
 class Crime(models.Model):
     block = models.IntegerField()
     street = models.CharField(max_length=150)
@@ -42,6 +52,8 @@ class Crime(models.Model):
     latitude = models.FloatField(blank=True)
     longitude = models.FloatField(blank=True)
     approved = models.BooleanField(default=False)
+
+    objects = CrimeManager()
 
     @models.permalink
     def get_absolute_url(self):
