@@ -11,6 +11,8 @@ class AgencyAdmin(admin.ModelAdmin):
 
 class CrimeAdmin(admin.ModelAdmin):
     exclude = ['latitude', 'longitude']
+    date_hierarchy = 'date'
+    list_filter = ('approved',)
 
 admin.site.register(CrimeType, CrimeTypeAdmin)
 admin.site.register(Agency, AgencyAdmin)
