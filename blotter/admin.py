@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blotter.models import CrimeType, Agency, Crime
+from crime_map.blotter.models import CrimeType, Agency, Crime
 
 class CrimeTypeAdmin(admin.ModelAdmin):
     model = CrimeType
