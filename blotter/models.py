@@ -19,7 +19,8 @@ COLOR_CHOICES = (
 class CrimeType(models.Model):
     type = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
-    marker_color = models.CharField(choices=COLOR_CHOICES, default=9, max_length=1)
+    # marker_color shouldn't be a char field.
+    marker_color = models.CharField(choices=COLOR_CHOICES, default=9, max_length=10)
 
     def __unicode__(self):
         return self.type
