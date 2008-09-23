@@ -65,12 +65,14 @@ class Crime(models.Model):
             self.id]
         )
 
+    def get_coords(self):
+        y = geocoders.Yahoo(settings.YAHOO_API_KEY)
+        place, (lat, long) = y.geocode("%d %s in %s, %s" % (self.block, self.street, self.city, self.state))
+        return (lat, long)
+
     def save(self):
         if self.latitude == None and self.longitude == None:
-            y = geocoders.Yahoo(settings.YAHOO_API_KEY)
-            place, (lat, long) = y.geocode("%d %s in %s, %s" % (self.block, self.street, self.city, self.state))
-            self.latitude = lat
-            self.longitude = long
+            self.latitude, self.longitude = self.get_coords()
         super(Crime, self).save()
 
 
