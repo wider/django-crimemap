@@ -4,15 +4,15 @@ from django.conf import settings
 from geopy import geocoders
 
 COLOR_CHOICES = (
-    ('blue',    'blue'),
-    ('red',     'red'),
-    ('green',   'green'),
-    ('teal',    'teal'),
-    ('yellow',  'yellow'),
-    ('purple',  'purple'),
-    ('magenta', 'magenta'),
-    ('orange',  'orange'),
-    ('black',   'black'),
+    (1,    'blue'),
+    (2,     'red'),
+    (3,   'green'),
+    (4,    'teal'),
+    (5,  'yellow'),
+    (6,  'purple'),
+    (7, 'magenta'),
+    (8,  'orange'),
+    (9,   'black'),
 )
 
 
@@ -20,7 +20,7 @@ class CrimeType(models.Model):
     type = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
     # marker_color shouldn't be a char field.
-    marker_color = models.CharField(choices=COLOR_CHOICES, default=9, max_length=10)
+    marker_color = models.IntegerField(choices=COLOR_CHOICES, default=9, max_length=10)
 
     def __unicode__(self):
         return self.type

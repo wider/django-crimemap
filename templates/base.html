@@ -22,7 +22,7 @@
           }
           // Adds a Marker
           var tinyIcon = new GIcon();
-          tinyIcon.image = "{{ MEDIA_URL }}img/mm_20_purple.png";
+          tinyIcon.image = "{{ MEDIA_URL }}img/marker_9.png";
           tinyIcon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
           tinyIcon.iconSize = new GSize(12, 20);
           tinyIcon.shadowSize = new GSize(22, 20);
@@ -30,7 +30,7 @@
           tinyIcon.infoWindowAnchor = new GPoint(5, 1);
           {% autopaginate object_list 10 %}
           {% for crime in object_list %}
-              tinyIcon.image = "{{ MEDIA_URL }}img/mm_20_{{ crime.crime_type.marker_color }}.png";
+              tinyIcon.image = "{{ MEDIA_URL }}img/marker_{{ crime.crime_type.marker_color }}.png";
               var marker{{ crime.id }} = new GMarker(new GLatLng('{{ crime.latitude }}', '{{ crime.longitude }}'), {title: "{{ crime.crime_type }}", icon:tinyIcon});
               marker{{ crime.id }}.bindInfoWindow("<div class=\"bubble_text\"><h3>{{ crime.block|ordinal }} block of {{ crime.street }}</h3><p>{{ crime.description|truncatewords:50 }}<br /><a href=\"{{ crime.get_absolute_url }}\" style=\"text-align: right;\">Read more</a></p><h5>Added: {{ crime.date }}</h5><h5>Reported as: {{ crime.crime_type }}</h5></div>", {maxWidth: 400});
               map.addOverlay(marker{{ crime.id }});
@@ -62,7 +62,7 @@
 
                         <h3>Sort by Crime Type</h3>
                         {% for crimetype in crimetypes %}
-                        <li><a href="/crimes/type/{{ crimetype.slug }}"><img src="{{ MEDIA_URL }}img/mm_20_{{ crimetype.marker_color }}.png" />{{ crimetype }}</a></li>
+                        <li><a href="/crimes/type/{{ crimetype.slug }}"><img src="{{ MEDIA_URL }}img/marker_{{ crimetype.marker_color }}.png" />{{ crimetype }}</a></li>
                         {% endfor %}
 
                         <h3>Sort by Agency</h3>
