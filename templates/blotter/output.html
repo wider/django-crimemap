@@ -1,0 +1,5 @@
+{% for crime in object_list %}
+{% ifchanged %}<h2>{{ crime.crime_type }}</h2>{% endifchanged %}
+<b>{{ crime.street }}, {{ crime.block }}:</b> {{ crime.description }}
+<br /><br /><br />
+{% endfor %}
