@@ -22,7 +22,7 @@
           }
           // Adds a Marker
           var tinyIcon = new GIcon();
-          tinyIcon.image = "{{ MEDIA_URL }}img/marker_9.png";
+          tinyIcon.image = "{{ MEDIA_URL }}img/mm_20_purple.png";
           tinyIcon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
           tinyIcon.iconSize = new GSize(12, 20);
           tinyIcon.shadowSize = new GSize(22, 20);
@@ -43,34 +43,43 @@
         </script>
     </head>
     <body onload="load()" onunload="GUnload()">
-        <div class="container_12">
+        <div class="container_12 clear_fix">
             <div id="masthead" class="grid_12">
                 <h1 class="logo">thestate.com</h1>
                 <div class="ad"></div>
             </div>
   
             <div id="content" class="grid_12">
-            <div id="main_content" class="grid_8 alpha">
+            <div id="main_content" class="grid_7 alpha">
                 <div id="map"></div>
-                <div id="crime_list" class="grid_8 alpha">
+                <div id="crime_list" class="grid_7 alpha">
                     {% block crime_list %}{% endblock %}
+                    <div class="ad">
+                        <img src="{{ MEDIA_URL }}img/banner_468x60.gif" alt="full_banner" />
+                    </div>
                 </div><!-- end div#crime_list -->
             </div>
-            <div id="sidebar" class="grid_4 omega">
-                    <ul id="legend">
-                        <li><a href="/crimes/">All Crimes</a></li>
+            <div id="sidebar" class="grid_5 omega">
+                    <div id="legend">
+                        <p class="view_all"><a href="/crimes/">View All Crimes</a></p>
+                        <img src="{{ MEDIA_URL }}img/banner_234x60.gif" class="float_right" alt="small_banner" />
 
+
+                    <div id="sidebar_large" class="grid_3 omega">
                         <h3>Sort by Crime Type</h3>
                         {% for crimetype in crimetypes %}
-                        <li><a href="/crimes/type/{{ crimetype.slug }}"><img src="{{ MEDIA_URL }}img/marker_{{ crimetype.marker_color }}.png" />{{ crimetype }}</a></li>
+                        <p><a href="/crimes/type/{{ crimetype.slug }}"><img src="{{ MEDIA_URL }}img/marker_{{ crimetype.marker_color }}.png" alt="{{ crimetype }}" />{{ crimetype }}</a></p>
                         {% endfor %}
+                    </div><!-- end div#sidebar_large -->
 
+                    <div id="sidebar_small" class="grid_2 omega">
                         <h3>Sort by Agency</h3>
                          {% for agency in agencies %}
-                        <li><a href="/crimes/agency/{{ agency.slug }}">{{ agency }}</a></li>
+                        <p><a href="/crimes/agency/{{ agency.slug }}">{{ agency }}</a></p>
                         {% endfor %}
+                    </div><!-- end div#sidebar_small -->
 
-                   </ul><!-- end ul#legend -->
+                   </div><!-- end ul#legend -->
                 </div><!-- end div#sidebar -->
 
                 <div class="ad">
