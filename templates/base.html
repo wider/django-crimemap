@@ -51,7 +51,9 @@
 
             <div id="content" class="grid_12">
             <div id="main_content" class="grid_7 alpha">
+                {% block map %}
                 <div id="map"></div>
+                {% endblock %}
                 <div id="crime_list" class="grid_7 alpha">
                     {% block crime_list %}{% endblock %}
                     <div class="ad">
