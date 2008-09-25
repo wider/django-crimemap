@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block map %}{% endblock %}
 {% block map_script %}
 
         function load() {
@@ -28,10 +29,12 @@
                 <p>{{ object.block }} block of {{ object.street }}.</p>
                 <p>Reported by {{ object.agency }}</p>
                 <p>{{ object.description }}</p>
+                <p class="align_right"><a href="{% url crime-list %}">Back to all crimes</a></p>
             </div>
     {% else %}
         <div class="crime row_even">
             <p>There is no crime that fits this criteria.</p>
+            <p class="align_right"><a href="{% url crime-list %}">Back to all crimes</a></p>
         </div>
     {% endif %}
 {% endblock %}
