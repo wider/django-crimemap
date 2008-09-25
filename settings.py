@@ -1,6 +1,7 @@
 # Django settings for crime_map project.
 
 YAHOO_API_KEY = ''
+GOOGLE_API_KEY = ''
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -82,6 +83,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
        'django.core.context_processors.request',
        'crime_map.blotter.request_context.agencies',
        'crime_map.blotter.request_context.crime_types',
+       'crime_map.blotter.request_context.google_api_key',
 )
 
 INSTALLED_APPS = (
