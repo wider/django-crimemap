@@ -5,10 +5,12 @@ div.container_12 { background: white; }
 .clear_fix:after { content: "."; display: block; width: 100%; clear: both; visibility: hidden; height: 1px; }
 .float_right { float: right; }
 .align_right { text-align: right; }
+h1#logo { background: url('http://media.thestate.com/images/logos/site_logo_340x60.gif') no-repeat; height: 75px; border-bottom: 3px solid #eee; margin-bottom: 0; }
+h1#logo span { visibility: hidden; }
 div#map { height: 400px; }
 div.bubble_text { font-size: 85%; }
 a img { border: 0; padding: 0 5px; }
-a { color: #22c; text-decoration: none; }
+a { color: #004276; text-decoration: none; }
 ul { list-style: none; }
 ul li { margin: 10px 0px; }
 p.view_all { float: left; padding-left: 10px; }
