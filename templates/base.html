@@ -46,7 +46,7 @@
         <div class="container_12 clear_fix">
             <div id="masthead" class="grid_12">
                 <h1 id="logo"><span>thestate.com</span></h1>
-                <div class="ad"></div>
+                <div id="date_filter"><form method="POST" action="{% url date-range-filter %}">{{ DateRangeForm.as_p }}<input type="submit" name="submit" /></form></div>
             </div>
 
             <div id="content" class="grid_12">

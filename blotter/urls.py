@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 from crime_map.blotter.models import Crime
-from crime_map.blotter.views import by_type, by_agency
+from crime_map.blotter.views import by_type, by_agency, filter_by_date
 
 urlpatterns = patterns('',
     url(r'^$', 'django.views.generic.list_detail.object_list', dict(queryset=Crime.objects.approved()), name="crime-list"),
@@ -19,4 +19,7 @@ urlpatterns = patterns('',
     # Crimes by Agency
     url(r'^agency/$', 'django.views.generic.list_detail.object_list', dict(queryset=Crime.objects.approved()), name="crime-type-list"),
     url(r'^agency/(?P<agency>[-\w]+)/$',by_agency, name="crime-agency-filter"),
+
+    # Crimes by Date Range
+    url(r'^range/$', filter_by_date, name="date-range-filter"),
 )

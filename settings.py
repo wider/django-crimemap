@@ -84,6 +84,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
        'crime_map.blotter.request_context.agencies',
        'crime_map.blotter.request_context.crime_types',
        'crime_map.blotter.request_context.google_api_key',
+       'crime_map.blotter.request_context.date_range_form',
 )
 
 INSTALLED_APPS = (
