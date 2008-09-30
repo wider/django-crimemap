@@ -46,6 +46,9 @@
         <div class="container_12 clear_fix">
             <div id="masthead" class="grid_12">
                 <h1 id="logo"><span>thestate.com</span></h1>
+                <div class="small_ad">
+                    <img src="{{ MEDIA_URL }}img/banner_234x60.gif" class="float_right" alt="small_banner" />
+                </div>
                 <div id="date_filter">
                     <form method="POST" action="{% url date-range-filter %}">
                         <ul>
@@ -64,7 +67,7 @@
                 {% endblock %}
                 <div id="crime_list" class="grid_7 alpha">
                     {% block crime_list %}{% endblock %}
-                    <div class="ad">
+                    <div class="big_ad">
                         <img src="{{ MEDIA_URL }}img/banner_468x60.gif" alt="full_banner" />
                     </div>
                 </div><!-- end div#crime_list -->
@@ -72,8 +75,6 @@
             <div id="sidebar" class="grid_5 omega">
                     <div id="legend">
                         <p class="view_all"><a href="/crimes/">View All Crimes</a></p>
-                        <img src="{{ MEDIA_URL }}img/banner_234x60.gif" class="float_right" alt="small_banner" />
-
 
                     <div id="sidebar_large" class="grid_3 omega">
                         <h3>Sort by Crime Type</h3>
