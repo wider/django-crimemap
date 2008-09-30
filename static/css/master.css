@@ -18,7 +18,7 @@ div.crime { padding: 10px; }
 div.crime * { margin: 5px; }
 div.row_odd { background: #eee; }
 div.row_even { background: #ccc; }
-div#date_filter { background: #ccc; padding: 10px 0; }
+div#date_filter { background: #ccc; padding: 10px 0; margin-bottom: 10px; }
 div#date_filter form ul { list-style-type: none; }
 div#date_filter h4 { display: inline; }
 div#date_filter form ul li { display: inline; width: 15%; padding-right: 5%; }
