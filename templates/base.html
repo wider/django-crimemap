@@ -49,7 +49,34 @@
            Date.format = 'mm/dd/yyyy';
            $(function() {
                $('div#date_filter input[type=text]').datePicker({clickInput:true})
+               $('#id_start_date').bind(
+                   'dpClosed',
+                   function(e, selectedDates)
+                   {
+                        var d = selectedDates[0];
+                        if (d) {
+                            d = new Date(d);
+                            $('#id_end_date').dpSetStartDate(d.addDays(1).asString());
+                        }
+                    }
+                );
+               $('#id_end_date').bind(
+                   'dpClosed',
+                   function(e, selectedDates)
+                   {
+                        var d = selectedDates[0];
+                        if (d) {
+                            d = new Date(d);
+                            $('#id_start_date').dpSetStartDate(d.addDays(-1).asString());
+                        }
+                    }
+                );
+
            });
+
+
+
+
         </script>
     </head>
     <body onload="load()" onunload="GUnload()">
