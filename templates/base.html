@@ -88,14 +88,14 @@
                     </div>
 
                     <div id="sidebar_large" class="grid_3 alpha">
-                        <h3>Sort by Crime Type</h3>
+                        <h3>Filter by Crime Type</h3>
                         {% for crimetype in crimetypes %}
                         <p><a href="/crimes/type/{{ crimetype.slug }}"><img src="{{ MEDIA_URL }}img/marker_{{ crimetype.marker_color }}.png" alt="{{ crimetype }}" />{{ crimetype }}</a></p>
                         {% endfor %}
                     </div><!-- end div#sidebar_large -->
 
                     <div id="sidebar_small" class="grid_2 omega">
-                        <h3>Sort by Agency</h3>
+                        <h3>Filter by Agency</h3>
                          {% for agency in agencies %}
                         <p><a href="/crimes/agency/{{ agency.slug }}">{{ agency }}</a></p>
                         {% endfor %}
