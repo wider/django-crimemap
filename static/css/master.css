@@ -1,29 +1,32 @@
 @import url('960.css');
 @import url('datePicker.css');
 * { font-family: Helvetica, Arial, sans-serif; }
-body { background: #ccc; }
-div.container_12 { background: white; }
+body { background: #333; }
+h1,h2,h3,h4,h5,h6 { color: #ccc; }
+div.container_12 { background: url('/static/img/crime_face.jpg') black bottom right no-repeat; }
 .clear_fix:after { content: "."; display: block; width: 100%; clear: both; visibility: hidden; height: 1px; }
 .float_right { float: right; }
 .align_right { text-align: right; }
 h1#logo { 
-    background: url('http://media.thestate.com/images/logos/site_logo_340x60.gif');
+    background: url('http://image.vmixcore.com/imgman.jpg?url=http://image.vmixcore.com/11/44/1/5103600/106/11/51/de964afad02d21d29b490d54a43636c8.jpg&width=400&height=72&fill=000000000');
     background-repeat: no-repeat; 
     text-indent: -9999em;
-    height: 60px;
+    height: 72px;
 }
 div#map { height: 400px; }
 div.bubble_text { font-size: 85%; }
 a img { border: 0; padding: 0 5px; }
-a { color: #004276; text-decoration: none; }
+a { color: #004276; text-decoration: none; 
+    color: #88CBFE;}
+a:hover { color: #d00; }
 ul { list-style: none; }
 ul li { margin: 10px 0px; }
 p.view_all { text-align: center; padding-left: 10px; }
 div.crime { padding: 10px; }
 div.crime * { margin: 5px; }
 div.row_odd { background: #eee; }
-div.row_even { background: #ccc; }
-div#date_filter { background: #ccc; padding: 10px 0; margin-bottom: 10px; }
+div.row_even { background: #333; }
+div#date_filter { color: #ccc; background: #333; padding: 10px 0; margin-bottom: 10px; }
 div#date_filter form ul { list-style-type: none; }
 div#date_filter h4 { display: inline; padding: 0 10px; }
 div#date_filter form ul li { display: inline; width: 10%; padding-right: 3%; }
