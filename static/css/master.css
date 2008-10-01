@@ -14,10 +14,11 @@ h1#logo {
     height: 72px;
 }
 div#map { height: 400px; }
+div#map h1, div#map h2, div#map h3, div#map h4, div#map h5, div#map h6 { color: black; }
+div#map a { color: #004276; font-weight: bold; }
 div.bubble_text { font-size: 85%; }
 a img { border: 0; padding: 0 5px; }
-a { color: #004276; text-decoration: none; 
-    color: #88CBFE;}
+a { text-decoration: none; color: #88CBFE;}
 a:hover { color: #d00; }
 ul { list-style: none; }
 ul li { margin: 10px 0px; }
