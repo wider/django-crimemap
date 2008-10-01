@@ -24,6 +24,6 @@ def filter_by_date(request):
             crimes = Crime.objects.filter(date__range=(f.cleaned_data['start_date'], f.cleaned_data['end_date']))
             return object_list(request, queryset=crimes)
         else:
-            raise ValidationError("NOT VALID")
+            return HttpResponseRedirect(reverse('crime-list'))
     else:
         return HttpResponseRedirect(reverse('crime-list'))
