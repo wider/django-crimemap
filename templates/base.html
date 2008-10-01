@@ -48,7 +48,7 @@
            Date.firstDayOfWeek = 7;
            Date.format = 'mm/dd/yyyy';
            $(function() {
-               $('div#date_filter input[type=text]').datePicker({clickInput:true})
+               $('div#date_filter input[type=text]').datePicker({clickInput:true, startDate:"01/01/2008"})
                $('#id_start_date').bind(
                    'dpClosed',
                    function(e, selectedDates)
