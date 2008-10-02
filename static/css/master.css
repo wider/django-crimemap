@@ -36,3 +36,6 @@ div#date_filter form ul li { display: inline; width: 10%; padding-right: 3%; }
 div.small_ad, div.big_ad { padding: 15px; text-align: center; }
 div.small_ad { width: 235px; display: inline; float: right; }
 div.big_ad { width: 470px; }
+
+/* Calendar Styles */
+div#dp-popup h2 { color: black; }
