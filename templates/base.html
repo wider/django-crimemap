@@ -1,5 +1,4 @@
 {% load humanize %}
-{% load pagination_tags %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -31,7 +30,6 @@
           tinyIcon.shadowSize = new GSize(22, 20);
           tinyIcon.iconAnchor = new GPoint(6, 20);
           tinyIcon.infoWindowAnchor = new GPoint(5, 1);
-          {% autopaginate object_list 10 %}
           {% for crime in object_list %}
               tinyIcon.image = "{{ MEDIA_URL }}img/marker_{{ crime.crime_type.marker_color }}.png";
               var marker{{ crime.id }} = new GMarker(new GLatLng('{{ crime.latitude }}', '{{ crime.longitude }}'), {title: "{{ crime.crime_type }}", icon:tinyIcon});
